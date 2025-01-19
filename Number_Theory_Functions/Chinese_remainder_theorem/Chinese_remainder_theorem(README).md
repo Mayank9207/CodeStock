@@ -14,18 +14,61 @@ where \( aᵢ \) are given constants. The original form of CRT states that the g
 
 
 
-### Condition for Solving the System of Congruences
+# Generalized Chinese Remainder Theorem (CRT) for Non-Coprime Moduli
 
-For the system of congruences:
-x ≡ a₁ (mod m₁) x ≡ a₂ (mod m₂)
+When the moduli m₁, m₂, ..., mₖ are **not pairwise coprime**, the standard Chinese Remainder Theorem cannot be directly applied. However, such systems can still be solved under certain conditions.
 
-The solution exists if and only if the following condition holds:
+---
 
-gcd(m₁, m₂) | (a₂ - a₁)
+## Case 1: Moduli Are Not Coprime but the System is Consistent
 
-Where:
-- `gcd(m₁, m₂)` is the greatest common divisor (GCD) of the moduli `m₁` and `m₂`,
-- `a₁` and `a₂` are the respective remainders.
 
-This condition means that the difference between `a₂` and `a₁` must be divisible by the greatest common divisor of `m₁` and `m₂` for the system to have a solution.
 
+### General Algorithm for Non-Coprime Moduli
+
+To solve a system of congruences with non-coprime moduli:
+
+1. **Define the System**:
+   x ≡ aᵢ (mod mᵢ), for i = 1, 2, ..., k
+
+2. **Check Pairwise Consistency**:
+   - For each pair of congruences:
+     x ≡ aᵢ (mod mᵢ)
+     x ≡ aⱼ (mod mⱼ)
+
+     - Compute gcd(mᵢ, mⱼ) = g.
+     - Verify aᵢ ≡ aⱼ (mod g). If this condition is violated, the system is inconsistent.
+
+3. **Combine Consistent Congruences**:
+   - Combine congruences iteratively using the least common multiple (lcm) of moduli:
+     x ≡ a (mod lcm(mᵢ, mⱼ))
+
+4. **Solve the Final Reduced System**:
+   - After reducing all congruences, solve the resulting single congruence.
+
+---
+
+## Example: Solving a System with Non-Coprime Moduli
+
+Solve the system:
+x ≡ 2 (mod 6)
+x ≡ 3 (mod 9)
+
+### Step 1: Check Consistency
+- Compute gcd(6, 9) = 3.
+- Verify 2 ≡ 3 (mod 3). This condition is satisfied because both leave a remainder of 2 modulo 3.
+
+### Step 2: Combine Congruences
+- Combine the two congruences into one:
+  x ≡ 2 (mod lcm(6, 9)) = x ≡ 2 (mod 18)
+
+### Final Solution:
+x ≡ 2 (mod 18)
+
+---
+
+## Notes:
+- If the system is inconsistent, no solution exists.
+- If all moduli are coprime, the standard Chinese Remainder Theorem applies.
+
+## USE OF CHINESE REMAINDER THEOREM IN SOLVING PROBLEMS
